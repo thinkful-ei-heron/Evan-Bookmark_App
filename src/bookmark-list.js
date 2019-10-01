@@ -5,7 +5,7 @@ import api from './api';
 
 const render = function () {
     if(store.addingNewBookmark === true) {
-        addNewBookmarkForm()
+        addNewBookmarkForm();
     }
     else if (store.addingNewBookmark === false) {
         renderList();
@@ -60,11 +60,11 @@ const generateBookmarkList = function(bookmarks){
             <label for="newBookmark">Create a new bookmark</label>
             <button class="addNewForm" name="newBookmark" type="button">+</button>
             <select id="filter-menu" name="ratingMenu">
-                <option value="fiveStars">5 Stars</option>
-                <option value="fourStars">4 Stars</option>
-                <option value="threeStars">3 Stars</option>
-                <option value="twoStars">2 Stars</option>
-                <option value="oneStars">1 Star</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
             </select>
       </div>
     `;
