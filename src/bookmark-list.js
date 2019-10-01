@@ -78,28 +78,7 @@ const renderList = function () {
 
 
 
-// const generateBookmarkElement = function (bookmark) {
-//     let bookmarkExpandedView = ``;
-//     let bookmarkTitle = `<span class="bookmark-item">${bookmark.rating}</span>`;
-//     if (bookmark.expanded) {
-//         bookmarkTitle = `
-//         <button class="bookmark-item-delete">
-//             <span class="button-label">delete</span>
-//         </button>`;
-//         bookmarkExpandedView = `
-//         <div class="bookmark-item-controls">
-//                 <button class="visit-URL js-visit-URL">
-//                 <span class="button-label">Visit Site!</span>
-//             <div>${bookmark.desc}</div>
-//         </div>
-//     `;}
-//     return `
-//         <li class="bookmark-element" data-item-id="${bookmark.id}">
-//             <span class"bookmark-item">${bookmark.title} ${bookmarkTitle}</span>
-//                 ${bookmarkExpandedView}
-//         </li>
-//     `;
-// };
+
 
 // const generateBookmarksItemsString = function (bookmarkList) {
 //     const bookmarks = bookmarkList.map((bookmark) => generateBookmarkElement(bookmark));
