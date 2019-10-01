@@ -1,8 +1,10 @@
-<div class="navbar">
-    <form>
+<nav class="navbar">
+                
+    <form id="js-bookmark-list-form">
         <label for="newBookmark">Create a new bookmark</label>
         <button name="newBookmark" type="submit">+</button>
     </form>
+
     <div class="dropdown">
         <form>
             <label for="ratingMenu">Filter your bookmarks by minumum rating:</label>
@@ -15,10 +17,10 @@
             </select>
         </form>
     </div>
-</div>
-
+</nav>
+            
 <div role="saved-bookmarks">
-    <h2>Saved Bookmarks</h2>
+    <h2>Your Saved Bookmarks:</h2>
     <ul class="bookmarks"></ul>
         <li>
             <p>Bookmark Title</p>
@@ -29,3 +31,4 @@
             <p>Rating</p>
         </li>
 </div>
+
