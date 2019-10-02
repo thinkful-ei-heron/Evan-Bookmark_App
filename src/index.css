@@ -25,6 +25,11 @@ header {
     padding: 10px;
 }
 
+.toggleExpanded:hover {
+    background-color: white;
+    color: black;
+}
+
 .button{
     background-color: #4CAF50;
     border: none;
@@ -110,7 +115,7 @@ main {
 
 .description-box {
     margin: auto;
-    width: 90%;
+    width: 91%;
     height: 140px;
 }
 
