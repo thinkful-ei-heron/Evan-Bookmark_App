@@ -1,3 +1,124 @@
+body {
+    border: 1px solid black;
+    background-color: rgb(96, 129, 192);
+}
+
 li { 
     list-style-type: none;
 }
+
+header {
+    text-align: center;
+    border: 1px solid black;
+    margin: 10px;
+    background-color: rgb(58, 58, 58);
+    color: white;
+}
+
+.toggleExpanded {
+    width: 95%;
+    text-align: center;
+    background-color: rgb(107, 107, 107);
+    color: white;
+    border: 1px solid black;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+.addNewForm {
+    display: inline-block;
+    width: 168px;
+    margin: 5px;
+    font-size: 16px;
+    border: 1px solid black;
+    background-color: rgb(241, 241, 241);
+    padding: 3px;
+}
+
+.filter {
+    border: 1px solid rgb(0, 0, 0);
+    margin-top: 0px;
+    padding: 3px;
+    display: inline-block;
+    background-color: rgb(241, 241, 241);
+    width: 160px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+.options {
+    border: 1px solid black;
+    padding: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+main {
+    text-align: center;
+}
+
+.bookmark-title-entry {
+    margin: auto;
+    display: block;
+    width: 90%;
+    padding: 5px;
+}
+
+.bookmark-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.bookmark-URL-entry {
+    margin: auto;
+    display: block;
+    width: 90%;
+    padding: 5px;
+}
+
+.bookmark-URL {
+    padding-bottom: 20px;
+    font-size: 22px;
+}
+
+.rating {
+    padding-bottom: 10px;
+    padding-top: 0px;
+    border: 1px solid black;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.ratingMenu {
+    font-size: 15px;
+    padding: 5px;
+}
+
+.description-box {
+    margin: auto;
+    width: 90%;
+    height: 140px;
+}
+
+.submit {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 120px;
+}
+
+
