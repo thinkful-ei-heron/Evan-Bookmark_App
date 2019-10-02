@@ -82,29 +82,9 @@ const handleNewBookmarkClick = function () {
     });
 };
 
-
-// const handleNewBookmarkSubmit = function () {
-//     $('body').on('submit', '#js-bookmark-list-form', function(event) {
-//         event.preventDefault();
-//         const title = $('.bookmark-title-entry').val();
-//         const url = $('.bookmark-URL-entry').val();
-//         const rating = $('.rating').val();
-//         const desc = $('.desc').val();
-//         const newBookmark = {title, url, rating, desc};
-        
-//         console.log(newBookmark);
-
-//         api.createBookmark(newBookmark)
-//             .then((newBookmark) => {
-//                 store.addBookmark(newBookmark);
-//                 store.toggleAddBookmark();
-//                 render();
-//         });
-//     });
-// };
-
 const handleNewBookmarkSubmit = function() {
     $('#js-bookmark-list-form').submit(function(event){
+    //$('body').on('submit', '#js-bookmark-list-form', function(event){
         event.preventDefault();
         const newTitle = $('.bookmark-title-entry').val();
         const newUrl = $('.bookmark-URL-entry').val();
@@ -130,7 +110,6 @@ const bindEventListeners = function () {
 
 export default {
     generateBookmarkList,
-
     addNewBookmarkForm,
     render,
     bindEventListeners
