@@ -1,9 +1,15 @@
 /* eslint-disable indent */
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/evanvogts';
 
-const listApiFetch = function (...args) {
+const listApiFetch = function (url, method, newData) {
     let error;
-    return fetch(...args)
+    return fetch(url, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: newData
+      })
         .then(res => {
             if (!res.ok) {
                 error = { code: res.status };
@@ -28,15 +34,8 @@ const getBookmarks = function () {
     return listApiFetch(`${BASE_URL}/bookmarks`);
 };
 
-const createBookmark = function (title, url, desc, rating) {
-    const newBookmark = JSON.stringify({
-        title: title,
-        url: url,
-        desc: desc,
-        rating: rating
-    });
-    console.log(newBookmark);
-    // return listApiFetch(`${BASE_URL}/bookmarks`, 'POST', newBookmark);
+const createBookmark = function (newBookmark) {
+    return listApiFetch(`${BASE_URL}/bookmarks`, 'POST', newBookmark);
 };
 
 const deleteBookmark = function (id) {

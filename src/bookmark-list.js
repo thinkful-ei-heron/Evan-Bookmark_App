@@ -3,13 +3,6 @@ import $ from 'jquery';
 import store from './store';
 import api from './api';
 
-function serializeJson(form) {
-    const formData = new FormData(form);
-    const o = {};
-    formData.forEach((val, name) => o[name] = val);
-    return JSON.stringify(o);
-}
-
 const render = function () {
     let html = ``;
     if (store.addingNewBookmark === true) {
@@ -97,7 +90,7 @@ const generateBookmarkList = function (bookmarks) {
             <button class="addNewForm" name="newBookmark" type="button">New Bookmark +</button>
             <div class="filter">
             <label for="ratingMenu">Filter Bookmarks:</label>
-            <select id="filter-menu" name="ratingMenu">
+            <select id="ratingMenu" name="ratingMenu">
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3">3</option>
@@ -125,23 +118,21 @@ const handleNewBookmarkSubmit = function () {
         let formElement = $('#js-bookmark-list-form')[0];
         console.log(formElement);
         console.log(serializeJson(formElement));
-
-        // const newTitle = $('.bookmark-title-entry').val();
-        // const newUrl = $('.bookmark-URL-entry').val();
-        // const newRating = $('.rating').val();
-        // const newDesc = $('.desc').val();
-        // $('.bookmark-title-entry').val();
-        // $('.bookmark-URL-entry').val();
-        // $('.rating').val();
-        // $('.desc').val();
-        // const newBookmarkArray = [newTitle, newUrl, newRating, newDesc];
-        // api.createBookmark(newBookmarkArray)
-        //     .then((newBookmark) => {
-        //         store.addBookmark(newBookmark);
-        //         render();
-        //     });
+        api.createBookmark(serializeJson(formElement))
+            .then ((newBookmark) => {
+                store.addBookmark(newBookmark);
+                store.addingNewBookmark = false;
+                render();
+            });
     });
 };
+
+function serializeJson(form) {
+    const formData = new FormData(form);
+    const o = {};
+    formData.forEach((val, name) => o[name] = val);
+    return JSON.stringify(o);
+}
 
 const bindEventListeners = function () {
     handleNewBookmarkClick();
