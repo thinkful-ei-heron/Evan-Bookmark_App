@@ -53,7 +53,9 @@ const generateBookmarkElement = function (bookmark) {
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
     <button onclick="window.location.href='${bookmark.url}';" class="visit-URL js-visit-URL">Visit Site!</button>
-    <p>Description: ${bookmark.desc}</p>
+    <div class="descriptionData">
+        <p><i>Description:</i> ${bookmark.desc}</p>
+    </div>
     <button class="delete" id="delete">Delete</button>
     `;
     else if (store.expandedView === false)
@@ -79,7 +81,8 @@ const getIdFromBookmark = function (bookmark) {
 
 const handleToggleBookmarkClick = function () {
     $('body').on('click', '.toggleExpanded', event => {
-        store.toggleExpanded(event.currentTarget);
+        let id = getIdFromBookmark (event.currentTarget)
+        store.toggleExpanded(id);
         render();
     });
 };

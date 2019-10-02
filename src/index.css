@@ -134,4 +134,11 @@ main {
     padding-bottom: 5px;
 }
 
-
+.descriptionData {
+    border: 1px solid black;
+    margin: 18px;
+    margin-left: 60px;
+    margin-right: 60px;
+    background-color: rgb(216, 216, 216);
+    font-size: 16px;
+}
