@@ -83,7 +83,7 @@ const getIdFromBookmark = function (bookmark) {
 
 const handleToggleBookmarkClick = function () {
     $('body').on('click', '.toggleExpanded', event => {
-        let id = getIdFromBookmark (event.currentTarget)
+        let id = getIdFromBookmark (event.currentTarget);
         store.toggleExpanded(id);
         render();
     });
