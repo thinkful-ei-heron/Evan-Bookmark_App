@@ -149,3 +149,103 @@ main {
     background-color: rgb(216, 216, 216);
     font-size: 16px;
 }
+
+@media screen and (min-width: 768px) {
+    header {
+        margin: 20px;
+    }
+
+    .toggleExpanded {
+        width: 90%;
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .addNewForm {
+        width: 180px;
+        margin: 5px;
+        font-size: 20px;
+        padding: 5px;
+    }
+
+    .filter {
+        padding: 5px;
+        width: 190px;
+        margin: 5px;
+        font-size: 20px;
+    }
+    
+    .options {
+        padding: 14px;
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+    .bookmark-title-entry {
+        padding: 10px;
+        font-size: 25px;
+    }
+    
+    .bookmark-title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 35px;
+    }
+    
+    .bookmark-URL-entry {
+        padding: 10px;
+        font-size: 25px;
+    }
+    
+    .bookmark-URL {
+        padding-bottom: 20px;
+        font-size: 35px;
+    }
+    
+    .rating {
+        padding-bottom: 30px;
+        font-size: 30px;
+    }
+    
+    .ratingMenu {
+        font-size: 25px;
+        padding: 10px;
+    }
+    
+    .description-box {
+        width: 91%;
+        height: 180px;
+        font-size: 25px;
+    }
+    
+    .submit {
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 140px;
+        font-size: 24px;
+        margin-left: 5px;
+    }
+    
+    .cancel {
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-right: 5px;
+        width: 140px;
+        font-size: 24px;
+    }
+    
+    .descriptionData {
+        font-size: 20px;
+    }
+
+    .visit-URL {
+        font-size: 20px;
+    }
+
+    .delete {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+  }

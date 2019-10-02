@@ -52,7 +52,7 @@ const generateBookmarkElement = function (bookmark) {
         return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
-    <button onclick="window.location.href='${bookmark.url}';" class="visit-URL js-visit-URL">Visit Site!</button>
+    <button onclick="window.location.href='${bookmark.url}';" class="visit-URL">Visit Site!</button>
     <div class="descriptionData">
         <p><i>Description:</i> ${bookmark.desc}</p>
     </div>
