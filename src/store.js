@@ -1,10 +1,15 @@
 /* eslint-disable indent */
 const bookmarks = [];
 let addingNewBookmark = false;
+let expandedView = false;
 let error = null;
 
 const toggleAddBookmark = function () {
     this.addingNewBookmark = !this.addingNewBookmark;
+};
+
+const toggleExpanded = function () {
+    this.expandedView = !this.expandedView;
 };
 
 const findById = function (id) {
@@ -24,6 +29,8 @@ const setError = function (error) {
 };
 
 export default {
+    toggleExpanded,
+    expandedView,
     toggleAddBookmark,
     addingNewBookmark,
     bookmarks,

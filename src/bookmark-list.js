@@ -48,13 +48,26 @@ const addNewBookmarkForm = function () {
 };
 
 const generateBookmarkElement = function (bookmark) {
+    if (store.expandedView === true)
     return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
-    <h3>${bookmark.title}</h3>
-    <p>Rating: ${bookmark.rating}</p>
+    <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ... Rating: ${bookmark.rating}</button></h3>
     <button onclick="window.location.href='${bookmark.url}';" class="visit-URL js-visit-URL">Visit Site!</button>
     <p>Description: ${bookmark.desc}</p>
+    <button class="delete">Delete</button>
     `;
+    else if (store.expandedView === false)
+    return `
+    <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
+    <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ... Rating: ${bookmark.rating}</button></h3>
+    `;
+};
+
+const handleToggleBookmarkClick = function () {
+    $('body').on('click','.toggleExpanded', function() {
+        store.toggleExpanded();
+        render();
+    });
 };
 
 const generateBookmarkList = function(bookmarks){
@@ -106,6 +119,7 @@ const handleNewBookmarkSubmit = function() {
 const bindEventListeners = function () {
     handleNewBookmarkClick();
     handleNewBookmarkSubmit();
+    handleToggleBookmarkClick();
 };
 
 export default {
