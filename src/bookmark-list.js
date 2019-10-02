@@ -30,7 +30,7 @@ const addNewBookmarkForm = function () {
 
     <div class="rating">
         <p>Rate your bookmark:</p>
-        <select id="rating" name="rating">
+        <select id="rating" name="rating" required>
             <option value"5">5</option>
             <option value"4">4</option>
             <option value"3">3</option>
@@ -40,7 +40,7 @@ const addNewBookmarkForm = function () {
     </div>
 
     <div class="description">
-        <input type="text" name="desc" placeholder="Add a description for your new bookmark (optional)...">
+        <input type="text" name="desc" placeholder="Add a description for your new bookmark..." required>
     </div>
 
     <button class="submit" type="submit">Submit</button>
@@ -51,9 +51,9 @@ const generateBookmarkElement = function (bookmark) {
     return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3>${bookmark.title}</h3>
-    <p>${bookmark.rating}</p>
-    <button class="visit-URL js-visit-URL">Visit Site!</button>
-    <p>${bookmark.desc}</p>
+    <p>Rating: ${bookmark.rating}</p>
+    <button onclick="window.location.href='${bookmark.url}';" class="visit-URL js-visit-URL">Visit Site!</button>
+    <p>Description: ${bookmark.desc}</p>
     `;
 };
 
@@ -77,71 +77,55 @@ const generateBookmarkList = function(bookmarks){
 
 const handleNewBookmarkClick = function () {
     $('body').on('click','.addNewForm', function() {
-        console.log('check')
         store.toggleAddBookmark();
-        console.log(store)
         render();
     });
 };
 
+
 // const handleNewBookmarkSubmit = function () {
 //     $('body').on('submit', '#js-bookmark-list-form', function(event) {
 //         event.preventDefault();
-//         const newBookmarkTitle
-//     })
-// }
+//         const title = $('.bookmark-title-entry').val();
+//         const url = $('.bookmark-URL-entry').val();
+//         const rating = $('.rating').val();
+//         const desc = $('.desc').val();
+//         const newBookmark = {title, url, rating, desc};
+        
+//         console.log(newBookmark);
 
-
-
-
-
-
-
-// const generateBookmarksItemsString = function (bookmarkList) {
-//     const bookmarks = bookmarkList.map((bookmark) => generateBookmarkElement(bookmark));
-//     return bookmarks.join('');
-// };
-
-// const render = function () {
-//     let bookmarks = [...store.bookmarks];
-//     const bookmarkListItemsString = generateBookmarksItemsString(bookmarks);
-//     $('.js-bookmark-list').html(bookmarkListItemsString);
-// };
-
-// const handleNewBookmarkSubmit = function () {
-//     $('#js-shopping-list-form').submit(function (event) {
-//       event.preventDefault();
-//       const newItemName = $('.js-shopping-list-entry').val();
-//       $('.js-shopping-list-entry').val('');
-//       api.createItem(newItemName)
-//         .then((newItem) => {
-//           store.addItem(newItem);
-//           render();
+//         api.createBookmark(newBookmark)
+//             .then((newBookmark) => {
+//                 store.addBookmark(newBookmark);
+//                 store.toggleAddBookmark();
+//                 render();
 //         });
 //     });
 // };
-  
-// const getBookmarkIdFromElement = function (item) {
-//     return $(item)
-//         .closest('.js-item-element')
-//         .data('item-id');
-// };
-  
-// const handleDeleteItemClicked = function () {
-//     $('.js-bookmark-list').on('click', '.js-bookmark-delete', event => {
-//         const id = getBookmarkIdFromElement(event.currentTarget);
-//         let bookmark = store.findById(id);
-//         api.deleteItem(bookmark.id)
-//             .then (() => {
-//                 store.findAndDelete (id);
-//                 render();
-//             });
-//     });
-// };
 
+const handleNewBookmarkSubmit = function() {
+    $('#js-bookmark-list-form').submit(function(event){
+        event.preventDefault();
+        const newTitle = $('.bookmark-title-entry').val();
+        const newUrl = $('.bookmark-URL-entry').val();
+        const newRating = $('.rating').val();
+        const newDesc = $('.desc').val();
+        $('.bookmark-title-entry').val();
+        $('.bookmark-URL-entry').val();
+        $('.rating').val();
+        $('.desc').val();
+        const newBookmarkArray = (newTitle, newUrl, newRating, newDesc);
+        api.createBookmark(newBookmarkArray)
+            .then((newBookmark) => {
+                store.addBookmark(newBookmark);
+                render();
+            });
+    });
+};
 
 const bindEventListeners = function () {
     handleNewBookmarkClick();
+    handleNewBookmarkSubmit();
 };
 
 export default {

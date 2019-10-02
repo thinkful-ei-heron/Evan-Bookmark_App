@@ -11,8 +11,8 @@ const findById = function (id) {
     return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
 };
 
-const addBookmark = function (title) {
-    this.bookmarks.push(title);
+const addBookmark = function (bookmark) {
+    this.bookmarks.push(bookmark);
 };
 
 const findAndDelete = function (id) {
