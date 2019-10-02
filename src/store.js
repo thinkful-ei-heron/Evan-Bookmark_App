@@ -3,6 +3,10 @@ const bookmarks = [];
 let addingNewBookmark = false;
 let error = null;
 
+const toggleAddBookmark = function () {
+    this.addingNewBookmark = !this.addingNewBookmark;
+};
+
 const findById = function (id) {
     return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
 };
@@ -20,6 +24,7 @@ const setError = function (error) {
 };
 
 export default {
+    toggleAddBookmark,
     addingNewBookmark,
     bookmarks,
     error,

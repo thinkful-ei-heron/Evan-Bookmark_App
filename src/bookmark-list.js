@@ -4,15 +4,18 @@ import store from './store';
 import api from './api';
 
 const render = function () {
+    let html = ``;
     if(store.addingNewBookmark === true) {
-        addNewBookmarkForm();
+        html=addNewBookmarkForm();
     }
     else if (store.addingNewBookmark === false) {
-        renderList();
+        html=generateBookmarkList(store.bookmarks);
     }
+    $('.app-input').html(html);
 };
 
-const addNewBookmarkForm = function () {`
+const addNewBookmarkForm = function () {
+    return `
     <form id="js-bookmark-list-form">
 
     <div class="bookmark-title">
@@ -40,7 +43,7 @@ const addNewBookmarkForm = function () {`
         <input type="text" name="desc" placeholder="Add a description for your new bookmark (optional)...">
     </div>
 
-    <button type="submit">Submit</button>
+    <button class="submit" type="submit">Submit</button>
 </form>`;
 };
 
@@ -49,7 +52,7 @@ const generateBookmarkElement = function (bookmark) {
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3>${bookmark.title}</h3>
     <p>${bookmark.rating}</p>
-    <button class="visit-URL js-visit-URL">Visit!</button>
+    <button class="visit-URL js-visit-URL">Visit Site!</button>
     <p>${bookmark.desc}</p>
     `;
 };
@@ -70,11 +73,25 @@ const generateBookmarkList = function(bookmarks){
     `;
     const items = bookmarks.map((bookmark) => generateBookmarkElement(bookmark));
     return nav + items.join('');
-}
-
-const renderList = function () {
-    $('.app-input').html(generateBookmarkList(store.bookmarks));
 };
+
+const handleNewBookmarkClick = function () {
+    $('body').on('click','.addNewForm', function() {
+        console.log('check')
+        store.toggleAddBookmark();
+        console.log(store)
+        render();
+    });
+};
+
+// const handleNewBookmarkSubmit = function () {
+//     $('body').on('submit', '#js-bookmark-list-form', function(event) {
+//         event.preventDefault();
+//         const newBookmarkTitle
+//     })
+// }
+
+
 
 
 
@@ -124,12 +141,12 @@ const renderList = function () {
 
 
 const bindEventListeners = function () {
-
+    handleNewBookmarkClick();
 };
 
 export default {
     generateBookmarkList,
-    renderList,
+
     addNewBookmarkForm,
     render,
     bindEventListeners
