@@ -39,9 +39,7 @@ const createBookmark = function (newBookmark) {
 };
 
 const deleteBookmark = function (id) {
-    return listApiFetch(BASE_URL + '/bookmarks/' + id, {
-        method: 'DELETE'
-    });
+    return listApiFetch(`${BASE_URL}/bookmarks/${id}`, 'DELETE');
 };
 
 export default {

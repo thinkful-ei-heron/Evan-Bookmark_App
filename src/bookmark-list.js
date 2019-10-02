@@ -54,7 +54,7 @@ const generateBookmarkElement = function (bookmark) {
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
     <button onclick="window.location.href='${bookmark.url}';" class="visit-URL js-visit-URL">Visit Site!</button>
     <p>Description: ${bookmark.desc}</p>
-    <button class="delete">Delete</button>
+    <button class="delete" id="delete">Delete</button>
     `;
     else if (store.expandedView === false)
         return `
@@ -63,11 +63,11 @@ const generateBookmarkElement = function (bookmark) {
     `;
 };
 
-// const getIdFromBookmark = function (bookmark) {
-//     return $(bookmark)
-//         .closest('.js-bookmark')
-//         .data('bookmark-id');
-// };
+const getIdFromBookmark = function (bookmark) {
+    return $(bookmark)
+        .closest('.js-bookmark')
+        .data('bookmark-id');
+};
 
 // const handleToggleBookmarkClick = function () {
 //     $('body').on('click','.toggleExpanded', event => {
@@ -134,10 +134,24 @@ function serializeJson(form) {
     return JSON.stringify(o);
 }
 
+const handleDeleteClick = function () {
+    $('main').on('click', '.delete', event => {
+        event.preventDefault();
+        let id = getIdFromBookmark (event.currentTarget);
+        // console.log(id);
+        api.deleteBookmark(id)
+            .then(() => {
+                store.findAndDelete(id);
+                render();
+            });
+    });
+};
+
 const bindEventListeners = function () {
     handleNewBookmarkClick();
     handleNewBookmarkSubmit();
     handleToggleBookmarkClick();
+    handleDeleteClick();
 };
 
 export default {
