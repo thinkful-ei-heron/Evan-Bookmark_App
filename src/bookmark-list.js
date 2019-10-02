@@ -3,13 +3,20 @@ import $ from 'jquery';
 import store from './store';
 import api from './api';
 
+function serializeJson(form) {
+    const formData = new FormData(form);
+    const o = {};
+    formData.forEach((val, name) => o[name] = val);
+    return JSON.stringify(o);
+}
+
 const render = function () {
     let html = ``;
-    if(store.addingNewBookmark === true) {
-        html=addNewBookmarkForm();
+    if (store.addingNewBookmark === true) {
+        html = addNewBookmarkForm();
     }
     else if (store.addingNewBookmark === false) {
-        html=generateBookmarkList(store.bookmarks);
+        html = generateBookmarkList(store.bookmarks);
     }
     $('.app-input').html(html);
 };
@@ -19,13 +26,13 @@ const addNewBookmarkForm = function () {
     <form id="js-bookmark-list-form">
 
     <div class="bookmark-title">
-        <label for="bookmark-title-entry">Title:</label>
-        <input type="text" class="bookmark-title-entry" name="bookmark-title-entry" placeholder="Bookmark Title..." required>
+        <label for="title">Title:</label>
+        <input type="text" id="title" class="bookmark-title-entry" name="title" placeholder="Bookmark Title..." required>
     </div>
 
     <div class="bookmark-URL">
-        <label for="bookmark-URL-entry">URL:</label>
-        <input type="url" class="bookmark-URL-entry" name="bookmark-URL-entry" placeholder="https://NewBookmarksURL.com" required>
+        <label for="url">URL:</label>
+        <input type="url" id="url" class="bookmark-URL-entry" name="url" placeholder="https://NewBookmarksURL.com" required>
     </div>
 
     <div class="rating">
@@ -49,7 +56,7 @@ const addNewBookmarkForm = function () {
 
 const generateBookmarkElement = function (bookmark) {
     if (store.expandedView === true)
-    return `
+        return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
     <button onclick="window.location.href='${bookmark.url}';" class="visit-URL js-visit-URL">Visit Site!</button>
@@ -57,7 +64,7 @@ const generateBookmarkElement = function (bookmark) {
     <button class="delete">Delete</button>
     `;
     else if (store.expandedView === false)
-    return `
+        return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
     `;
@@ -78,13 +85,13 @@ const generateBookmarkElement = function (bookmark) {
 // };
 
 const handleToggleBookmarkClick = function () {
-    $('body').on('click','.toggleExpanded', event => {
+    $('body').on('click', '.toggleExpanded', event => {
         store.toggleExpanded(event.currentTarget);
         render();
     });
 };
 
-const generateBookmarkList = function(bookmarks){
+const generateBookmarkList = function (bookmarks) {
     const nav = `
         <div class="options">
             <button class="addNewForm" name="newBookmark" type="button">New Bookmark +</button>
@@ -105,30 +112,34 @@ const generateBookmarkList = function(bookmarks){
 };
 
 const handleNewBookmarkClick = function () {
-    $('body').on('click','.addNewForm', function() {
+    $('body').on('click', '.addNewForm', function () {
         store.toggleAddBookmark();
         render();
     });
 };
 
-const handleNewBookmarkSubmit = function() {
-    $('#js-bookmark-list-form').submit(function(event){
-    //$('body').on('submit', '#js-bookmark-list-form', function(event){
+const handleNewBookmarkSubmit = function () {
+    $('main').on('submit', '#js-bookmark-list-form', event => {
+        //$('body').on('submit', '#js-bookmark-list-form', function(event){
         event.preventDefault();
-        const newTitle = $('.bookmark-title-entry').val();
-        const newUrl = $('.bookmark-URL-entry').val();
-        const newRating = $('.rating').val();
-        const newDesc = $('.desc').val();
-        $('.bookmark-title-entry').val();
-        $('.bookmark-URL-entry').val();
-        $('.rating').val();
-        $('.desc').val();
-        const newBookmarkArray = (newTitle, newUrl, newRating, newDesc);
-        api.createBookmark(newBookmarkArray)
-            .then((newBookmark) => {
-                store.addBookmark(newBookmark);
-                render();
-            });
+        let formElement = $('#js-bookmark-list-form')[0];
+        console.log(formElement);
+        console.log(serializeJson(formElement));
+
+        // const newTitle = $('.bookmark-title-entry').val();
+        // const newUrl = $('.bookmark-URL-entry').val();
+        // const newRating = $('.rating').val();
+        // const newDesc = $('.desc').val();
+        // $('.bookmark-title-entry').val();
+        // $('.bookmark-URL-entry').val();
+        // $('.rating').val();
+        // $('.desc').val();
+        // const newBookmarkArray = [newTitle, newUrl, newRating, newDesc];
+        // api.createBookmark(newBookmarkArray)
+        //     .then((newBookmark) => {
+        //         store.addBookmark(newBookmark);
+        //         render();
+        //     });
     });
 };
 

@@ -4,9 +4,9 @@ const BASE_URL = 'https://thinkful-list-api.herokuapp.com/evanvogts';
 const listApiFetch = function (...args) {
     let error;
     return fetch(...args)
-        .then (res => {
+        .then(res => {
             if (!res.ok) {
-                error = {code: res.status};
+                error = { code: res.status };
                 if (!res.headers.get('content-type').includes('json')) {
                     error.message = res.statusText;
                     return Promise.reject(error);
@@ -19,6 +19,7 @@ const listApiFetch = function (...args) {
                 error.message = data.message;
                 return Promise.reject(error);
             }
+            // console.log(data);
             return data;
         });
 };
@@ -28,21 +29,22 @@ const getBookmarks = function () {
 };
 
 const createBookmark = function (title, url, desc, rating) {
-    const newBookmark = JSON.stringify({ 
+    const newBookmark = JSON.stringify({
         title: title,
         url: url,
         desc: desc,
         rating: rating
     });
-    return listApiFetch(`${BASE_URL}/bookmarks`, 'POST', newBookmark);
+    console.log(newBookmark);
+    // return listApiFetch(`${BASE_URL}/bookmarks`, 'POST', newBookmark);
 };
-  
+
 const deleteBookmark = function (id) {
     return listApiFetch(BASE_URL + '/bookmarks/' + id, {
         method: 'DELETE'
     });
 };
-  
+
 export default {
     getBookmarks,
     createBookmark,
