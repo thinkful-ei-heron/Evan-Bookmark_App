@@ -94,8 +94,9 @@ const generateBookmarkList = function (bookmarks) {
         <div class="options">
             <button class="addNewForm" name="newBookmark" type="button">New Bookmark +</button>
             <div class="filter">
-            <label for="ratingMenu">Filter Bookmarks:</label>
-            <select id="ratingMenu" name="ratingMenu">
+            <label for="ratingMenu">Bookmarks</label>
+            <select id="ratingMenu" class="ratingMenu2" name="ratingMenu">
+                <option value="0">Filter</option>
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3">3</option>
