@@ -253,3 +253,15 @@ main {
     }
 
   }
+
+  @media screen and (min-width: 1024px) {
+    
+    h1 {
+        font-size: 68px;
+    }
+
+    header {
+        margin: 30px;
+        border: 2px solid black;
+    }
+  }
