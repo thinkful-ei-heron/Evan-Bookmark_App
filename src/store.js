@@ -3,6 +3,7 @@ const bookmarks = [];
 let addingNewBookmark = false;
 let expandedView = false;
 let error = null;
+let filter = 0;
 
 const toggleAddBookmark = function () {
     this.addingNewBookmark = !this.addingNewBookmark;
@@ -34,6 +35,7 @@ const setError = function (error) {
 };
 
 export default {
+    filter,
     toggleExpanded,
     expandedView,
     toggleAddBookmark,

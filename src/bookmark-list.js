@@ -48,6 +48,7 @@ const addNewBookmarkForm = function () {
 };
 
 const generateBookmarkElement = function (bookmark) {
+    if (bookmark.rating >= store.filter) {
     if (store.expandedView === true)
         return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
@@ -63,6 +64,7 @@ const generateBookmarkElement = function (bookmark) {
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
     `;
+    }
 };
 
 const getIdFromBookmark = function (bookmark) {
@@ -157,7 +159,15 @@ const handleDeleteClick = function () {
     });
 };
 
+const ratingFilter = function () {
+    $('body').on('change', '#ratingMenu', event => {
+        store.filter =event.currentTarget.value;
+        render();
+    });
+};
+
 const bindEventListeners = function () {
+    ratingFilter();
     handleNewBookmarkClick();
     handleNewBookmarkSubmit();
     handleToggleBookmarkClick();
