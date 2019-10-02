@@ -63,7 +63,9 @@ header {
 }
 
 .options {
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
     padding: 10px;
     margin-left: 40px;
     margin-right: 40px;
@@ -124,6 +126,12 @@ main {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 120px;
+}
+
+.js-bookmark {
+    border-top: 1px solid black;
+    padding: 3px;
+    padding-bottom: 5px;
 }
 
 
