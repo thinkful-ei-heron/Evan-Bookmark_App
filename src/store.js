@@ -8,13 +8,18 @@ const toggleAddBookmark = function () {
     this.addingNewBookmark = !this.addingNewBookmark;
 };
 
+const findById = function (id) {
+    return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
+};
+
 const toggleExpanded = function () {
     this.expandedView = !this.expandedView;
 };
 
-const findById = function (id) {
-    return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
-};
+// const toggleExpanded = function (id) {
+//     const bookmark = this.bookmarks.find(currentBookmark => currentBookmark.id === id);
+//     bookmark.expanded = !bookmark.expanded;
+// };
 
 const addBookmark = function (bookmark) {
     this.bookmarks.push(bookmark);

@@ -63,9 +63,23 @@ const generateBookmarkElement = function (bookmark) {
     `;
 };
 
+// const getIdFromBookmark = function (bookmark) {
+//     return $(bookmark)
+//         .closest('.js-bookmark')
+//         .data('bookmark-id');
+// };
+
+// const handleToggleBookmarkClick = function () {
+//     $('body').on('click','.toggleExpanded', event => {
+//         const id = getIdFromBookmark(event.currentTarget);
+//         store.toggleExpanded(id);
+//         render();
+//     });
+// };
+
 const handleToggleBookmarkClick = function () {
-    $('body').on('click','.toggleExpanded', function() {
-        store.toggleExpanded();
+    $('body').on('click','.toggleExpanded', event => {
+        store.toggleExpanded(event.currentTarget);
         render();
     });
 };
