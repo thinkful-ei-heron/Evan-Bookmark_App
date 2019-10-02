@@ -1,48 +1,6 @@
 /* eslint-disable indent */
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/evanvogts';
 
-const getBookmarks = function () {
-    return fetch(`${BASE_URL}/bookmarks`);
-};
-
-function createBookmark(title,url,descr,rate) {
-    console.log('this is running');
-    let newURL = JSON.stringify({
-        title,
-        url,
-        descr,
-        rate
-    });
-    return fetch(`${base_URL}/bookmarks`, {
-        method: 'POST',
-        headers: headerContent,
-        body: newURL
-    })
-}
-
-function updateURL(id, updateData) {
-    const update = JSON.stringify(updateData);
-    return fetch(`${BASE_URL}/bookmarks/${id}`, {
-      method: 'PATCH',
-      headers: headerContent,
-      body: update
-    })
-}
-
-function deleteItem(id) {
-    return fetch(`${BASE_URL}/bookmarks/${id}`, {
-      method: 'DELETE',
-      headers: headerContent,
-    })
-}
-
-export default {
-    getURLs,
-    createBookmark,
-    updateURL,
-    deleteItem
-  };
-
 // const listApiFetch = function (...args) {
 //     let error;
 //     return fetch(...args)
@@ -64,7 +22,7 @@ export default {
 //             return data;
 //         });
 // };
-// 
+
 // const getBookmarks = function () {
 //     return listApiFetch(`${BASE_URL}/bookmarks`);
 // };
@@ -89,8 +47,50 @@ export default {
 //     });
 // };
   
+// export default {
+//     getBookmarks,
+//     createBookmark,
+//     deleteBookmark
+// };
+
+const apiFetch = function(url, method, newData){
+    let error = false;
+    return fetch(url, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: newData
+    })
+      .then(res => {
+        if(!res.ok) {
+          error = {code: res.status};
+        }
+        return res.json();
+      })
+      .then( data => {
+        if (error){
+          error.message = data.message;
+          return Promise.reject(error);
+        }
+        return data;
+      });
+};
+  
+const getBookmarks = function() {
+    return apiFetch(`${BASE_URL}/bookmarks`);
+};
+  
+const createBookmark = function(newObject){
+    return apiFetch(`${BASE_URL}/bookmarks`, 'POST', JSON.stringify(newObject));
+};
+  
+const deleteItem = function(id){
+    return apiFetch(`${BASE_URL}/bookmarks/${id}`, 'DELETE');
+};
+  
 export default {
     getBookmarks,
     createBookmark,
-    deleteBookmark
+    deleteItem
 };

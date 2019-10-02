@@ -49,7 +49,7 @@ const generateBookmarkElement = function (bookmark) {
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3>${bookmark.title}</h3>
     <p>${bookmark.rating}</p>
-    <button class="visit-URL js-visit-URL">Visit Site!</button>
+    <button class="visit-URL js-visit-URL">Visit!</button>
     <p>${bookmark.desc}</p>
     `;
 };
@@ -124,10 +124,7 @@ const renderList = function () {
 
 
 const bindEventListeners = function () {
-    handleNewBookmarkSubmit();
-    handleBookmarkClicked();
-    handleDeleteBookmarkClicked();
-    handleAddingClick();
+
 };
 
 export default {

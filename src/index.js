@@ -1,6 +1,5 @@
 /* eslint-disable indent */
 import $ from 'jquery';
-import 'normalize.css';
 import './index.css';
 import bookmarkList from './bookmark-list';
 import store from './store';

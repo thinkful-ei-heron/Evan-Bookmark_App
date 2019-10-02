@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 const bookmarks = [];
-const addingNewBookmark = false;
+let addingNewBookmark = false;
 let error = null;
 
 const findById = function (id) {
