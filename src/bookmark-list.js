@@ -42,8 +42,8 @@ const addNewBookmarkForm = function () {
     <div class="description">
         <input type="text" class="description-box" name="desc" placeholder="Add a description for your new bookmark..." required>
     </div>
-
-    <button class="submit" type="submit">Submit</button>
+    <button class="cancel" id="cancel" type="submit">Cancel</button>
+    <button class="submit" id="submit" type="submit">Submit</button>
 </form>`;
 };
 
@@ -114,9 +114,16 @@ const handleNewBookmarkClick = function () {
     });
 };
 
+const handleCancelBookmark = function () {
+    $('main').on('click', '#cancel', function() {
+        store.toggleAddBookmark()
+        render();
+    });
+};
+
 const handleNewBookmarkSubmit = function () {
     $('main').on('submit', '#js-bookmark-list-form', event => {
-        //$('body').on('submit', '#js-bookmark-list-form', function(event){
+    // $('main').on('submit', '#submit', event => {
         event.preventDefault();
         let formElement = $('#js-bookmark-list-form')[0];
         console.log(formElement);
@@ -155,6 +162,7 @@ const bindEventListeners = function () {
     handleNewBookmarkSubmit();
     handleToggleBookmarkClick();
     handleDeleteClick();
+    handleCancelBookmark();
 };
 
 export default {
