@@ -1,7 +1,6 @@
 /* eslint-disable indent */
 const bookmarks = [];
 let addingNewBookmark = false;
-let expandedView = false;
 let error = null;
 let filter = 0;
 
@@ -13,8 +12,9 @@ const findById = function (id) {
     return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
 };
 
-const toggleExpanded = function () {
-    this.expandedView = !this.expandedView;
+const toggleExpanded = function (id) {
+    const item = this.findById(id);
+    item.expandedView = !item.expandedView;
 };
 
 // const toggleExpanded = function (id) {
@@ -37,7 +37,6 @@ const setError = function (error) {
 export default {
     filter,
     toggleExpanded,
-    expandedView,
     toggleAddBookmark,
     addingNewBookmark,
     bookmarks,

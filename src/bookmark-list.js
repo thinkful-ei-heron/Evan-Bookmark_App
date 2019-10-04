@@ -49,7 +49,7 @@ const addNewBookmarkForm = function () {
 
 const generateBookmarkElement = function (bookmark) {
     if (bookmark.rating >= store.filter) {
-    if (store.expandedView === true)
+    if (bookmark.expandedView === true)
         return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
@@ -59,7 +59,7 @@ const generateBookmarkElement = function (bookmark) {
     </div>
     <button class="delete" id="delete">Delete</button>
     `;
-    else if (store.expandedView === false)
+    else
         return `
     <li class="js-bookmark" data-bookmark-id="${bookmark.id}">
     <h3><button class="toggleExpanded"><b>${bookmark.title}</b> ...... Rating: ${bookmark.rating}</button></h3>
